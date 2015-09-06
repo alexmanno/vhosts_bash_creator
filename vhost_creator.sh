@@ -23,8 +23,6 @@ cat <<EOF
 
 <VirtualHost *:80>
 
-ServerAdmin alexmanno96@gmail.com
-
 ServerName $1
 
 ServerAlias www.$1
