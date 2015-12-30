@@ -44,3 +44,4 @@ EOF
 a2ensite $1.conf && service apache2 reload
 service vsftpd restart
 echo "Your domain as been configured"
+
