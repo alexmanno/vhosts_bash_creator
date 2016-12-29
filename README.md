@@ -1,11 +1,23 @@
 # vhosts_bash_creator
 
-this is a bash software for add new vhost in apache2 and ftp virtual user in vsftpd
+Bash script useful for adding new vhost in apache2
 
-Installation:
-  - Download file
-  - run "chmod +x vhost_creator.sh"
-  - Let's Go!
+## Installation:
 
-Usage:
-  ./vhost_creator.sh domain.com username
+### Download
+``` bash
+git clone https://github.com/alex-manno/vhosts_bash_creator.git
+```
+
+### Permissions
+Add execution permission to file
+``` bash
+cd vhosts_bash_creator
+chmod +x vhost_creator.sh
+```
+
+## Usage:
+Change domain.com with your domain name
+``` bash
+./vhost_creator.sh domain.com
+```
