@@ -1,20 +1,25 @@
 #!/bin/bash
 
 if [ -z $1 ]; then
+	echo "No Site defined"
+	exit 1
+fi
 
-#non è stato specificato il dominio. 
+if [ -z $2 ]; then
+	echo "No User defined"
+	exit 1
+fi
 
-#Usage: ./script.sh dominio.com
-
-echo "No site parameters."
-
-else
+htpasswd -d /etc/vsftpd/ftpd.passwd $2
 
 #creo le cartelle per il dominio
-mkdir /var/www/$1 && mkdir /var/www/$1/public_html
+mkdir /var/www/$2
+mkdir /var/www/$2/$1 && mkdir /var/www/$2/$1/public_html
+
+chown -R vsftpd:nogroup /var/www/$2
 
 #creo una pagina di prova con phpinfo
-echo "<?php phpinfo(); ?>" > /var/www/$1/public_html/index.php
+echo "<?php phpinfo(); ?>" > /var/www/$2/$1/public_html/index.php
 
 #creo il file di virtual host
 (
@@ -27,7 +32,7 @@ ServerName $1
 
 ServerAlias www.$1
 
-DocumentRoot /var/www/$1/public_html
+DocumentRoot /var/www/$2/$1/public_html
 
 </VirtualHost>
 
@@ -37,7 +42,6 @@ EOF
 
 #attivo il vhost
 a2ensite $1.conf && service apache2 reload
-
+service vsftpd restart
 echo "Your domain as been configured"
 
-fi
