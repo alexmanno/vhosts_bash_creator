@@ -1,6 +1,6 @@
 # vhosts_bash_creator
 
-this is a bash software for add new vhost in apache2
+Bash script useful for adding new vhost in apache2
 
 ## Installation:
 
